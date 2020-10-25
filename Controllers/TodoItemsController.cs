@@ -9,7 +9,7 @@ using DrakeAPI.Models;
 
 namespace DrakeAPI.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("api/[TodoItems]")]
     [ApiController]
     public class TodoItemsController : ControllerBase
     {
@@ -81,8 +81,8 @@ namespace DrakeAPI.Controllers
         {
             _context.TodoItems.Add(todoItem);
             await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetTodoItem", new { id = todoItem.Id }, todoItem);
+            // string action , object route value, object value
+            return CreatedAtAction(nameof(GetTodoItem), new { id = todoItem.Id }, todoItem);
         }
 
         // DELETE: api/TodoItems/5
